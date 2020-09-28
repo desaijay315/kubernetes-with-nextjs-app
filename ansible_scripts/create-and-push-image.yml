@@ -4,7 +4,7 @@
 
   tasks:
     - name: login to aws
-      shell: "$(aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 583044482327.dkr.ecr.ap-south-1.amazonaws.com)
+      shell: "$(aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 583044482327.dkr.ecr.ap-south-1.amazonaws.com)"
 
     - name: remove the image
       command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
