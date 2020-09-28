@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: login to aws
+      shell: $(/usr/bin/aws ecr get-login --no-include-email --region ap-south-1)
+
+    - name: remove the image
+      command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
+      ignore_errors: yes
+
+    - name: docker pull
+      command: docker pull 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
+      ignore_errors: yes
+
+    - name: build the images
+      command: docker build -t nextjs .
+      args:
+        chdir: /opt/docker
+
+    - name: tag the images
+      command: docker tag nextjs:latest 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
+
+    - name: push the image
+      command: docker push 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
+  # - name: pull the image
+  #  command: docker pull 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
+  # - name: stop the container
+  #   command: docker stop nextjs-devops-container
+  #   ignore_errors: yes
+
+  #- name: stop rm container
+  #command: docker rm nextjs-devops-container
+  #ignore_errors: yes
+
+  #- name: create container using nextjs devops image
+  # command: docker run -d --name nextjs-devops-container -p 8080:8080 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
