@@ -11,7 +11,7 @@
     - name: Update repositories cache and install "unzip" package
       apt:
         name: unzip
-      update_cache: yes
+        update_cache: yes
 
     - name: Unzip AWS CLI bundle.
       shell: "cd /tmp && unzip awscli-bundle.zip"
