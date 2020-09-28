@@ -3,9 +3,6 @@
   become: true
 
   tasks:
-    - name: ECR login
-      shell: "$(aws ecr get-login --no-include-email --registry-ids 583044482327 --region ap-south-1)"
-
     - name: remove the image
       command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
       ignore_errors: yes
