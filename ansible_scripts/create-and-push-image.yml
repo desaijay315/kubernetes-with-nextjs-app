@@ -3,8 +3,23 @@
   become: true
 
   tasks:
-    - name: login to aws
-      shell: $(/usr/bin/aws ecr get-login --no-include-email --region ap-south-1)
+    - name: Download AWS CLI bundle.
+      shell: "cd /tmp && rm -rf /tmp/awscli* && curl 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip' -o 'awscli-bundle.zip'"
+
+    - name: Update repositories cache and install "unzip" package
+      apt:
+        name: unzip
+      update_cache: yes
+
+    - name: Unzip AWS CLI bundle.
+      shell: "cd /tmp && unzip awscli-bundle.zip"
+
+    - name: Run AWS CLI installer.
+      shell: "/tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws"
+
+    - name: Log into aws ecr docker registry
+      when: jupyterhub__notebook_registry != ''
+      shell: "$(/usr/bin/aws ecr get-login --no-include-email --region us-east-1)"
 
     - name: remove the image
       command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
