@@ -10,5 +10,5 @@
       command: docker rm nextjs-container
       ignore_errors: yes
 
-    - name: create container using nodejs devops image
+    - name: create container using nextjs image
       command: docker run -d --name nextjs-container -p 8080:8080 nextjs-container
