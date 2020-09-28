@@ -3,8 +3,8 @@
   become: true
 
   tasks:
-    # - name: login to aws
-    #   shell: $(/usr/bin/aws ecr get-login --no-include-email --region ap-south-1)
+    - name: login to aws
+      shell: $(/usr/bin/aws ecr get-login --no-include-email --region ap-south-1)
 
     - name: remove the image
       command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
