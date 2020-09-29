@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <a href="https://nextjs.org">Nextjs with Kubernetes</a>
+          Deploy <a href="https://nextjs.org">Nextjs with Kubernetes</a>
         </h1>
 
         <p className={styles.description}>
