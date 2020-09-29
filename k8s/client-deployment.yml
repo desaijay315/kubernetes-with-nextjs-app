@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: client
-          image: 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nodejs:latest
+          image: 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
           ports:
             - containerPort: 8080
