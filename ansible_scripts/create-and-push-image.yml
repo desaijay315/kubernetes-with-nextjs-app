@@ -6,7 +6,7 @@
     - name: ECR login
       shell: "$(/usr/bin/aws ecr get-login --no-include-email --registry-ids 583044482327 --region ap-south-1)"
 
-    - name: Delete the latest image
+    - name: Delete the latest image from the ECR
       shell: "/usr/bin/aws ecr batch-delete-image --repository-name nextjs --image-ids imageTag=latest"
 
     - name: remove the image
