@@ -8,6 +8,7 @@
 
     - name: Delete the latest image from the ECR
       shell: "/usr/bin/aws ecr batch-delete-image --repository-name nextjs --image-ids imageTag=latest"
+      ignore_errors: yes
 
     - name: remove the image
       command: docker rmi 583044482327.dkr.ecr.ap-south-1.amazonaws.com/nextjs:latest
