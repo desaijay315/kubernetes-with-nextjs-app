@@ -1,1 +1,5 @@
+[ansible]
 localhost
+
+[kubernetes]
+15.207.71.205
