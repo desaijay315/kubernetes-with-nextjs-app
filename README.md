@@ -4,7 +4,7 @@
 
 ## To refer the guide on complete deployments, visit
 
-[http://localhost:3000](http://localhost:3000)
+[https://djaytechdiary.com/deploying-nextjs-on-kubernetes](https://djaytechdiary.com/deploying-nextjs-on-kubernetes)
 
 <h3> 🤝🏻 Connect with Me & Leave your feedback </h3>
 
